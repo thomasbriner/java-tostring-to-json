@@ -1,0 +1,39 @@
+<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
+<idea-plugin>
+    <!-- Unique identifier of the plugin. It should be FQN. It cannot be changed between the plugin versions. -->
+    <id>plus.lixiang.java-tostring-to-json</id>
+
+    <!-- Public plugin name should be written in Title Case.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
+    <name>Java-tostring-to-json</name>
+
+    <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
+    <vendor email="zhangxuehao@lixiang.com" url="https://www.lixiang.com">Li auto</vendor>
+
+    <!-- Description of the plugin displayed on the Plugin Page and IDE Plugin Manager.
+         Simple HTML elements (text formatting, paragraphs, and lists) can be added inside of <![CDATA[ ]]> tag.
+         Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-description -->
+    <description><![CDATA[
+<p>如果你的java应用使用了lombok，使用lombok通用的toString()方法输出日志。那输出的日志通常不是很方便的阅读，有很大的需求是把toString()输出的内容转换为json，可以使用这款插件编辑的转化文本内容。</p>
+<p>使用方式：Tools -> java tostring to json </p>
+<hr/>
+<p>If your Java application uses lombok and outputs logs using the common toString() method from lombok, the logs are often not very readable. There is high demand to convert the output of toString() into JSON format, which can be done using this plugin to transform the text content. </p>
+<p>How to Use：Tools -> java tostring to json </p>
+  ]]></description>
+
+    <!-- Product and plugin compatibility requirements.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
+    <depends>com.intellij.modules.platform</depends>
+
+    <!-- Extension points defined by the plugin.
+         Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
+    <extensions defaultExtensionNs="com.intellij">
+
+    </extensions>
+    <actions>
+        <action id="convert" class="plus.lixiang.javatostringtojson.action.ConvertAction" text="java tostring to json"
+                description="javabean tostring to json">
+            <add-to-group group-id="ToolsMenu" anchor="first"/>
+        </action>
+    </actions>
+</idea-plugin>
