@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "plus.lixiang"
-version = "1.0.1"
+version = "1.0.2"
 
 repositories {
     mavenCentral()
@@ -35,17 +35,17 @@ tasks {
         targetCompatibility = "17"
     }
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+        kotlinOptions.jvmTarget = "11"
     }
 
     patchPluginXml {
-        sinceBuild.set("222")
+        sinceBuild.set("212")
         untilBuild.set("232.*")
     }
 
     signPlugin {
-        certificateChain.set(System.getenv("CERTIFICATE_CHAIN"))
-        privateKey.set(System.getenv("PRIVATE_KEY"))
+        certificateChainFile.set(file("certificate/chain.crt"))
+        privateKeyFile.set(file("certificate/private.pem"))
         password.set(System.getenv("PRIVATE_KEY_PASSWORD"))
     }
 
