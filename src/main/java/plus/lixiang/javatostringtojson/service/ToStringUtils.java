@@ -54,11 +54,13 @@ public class ToStringUtils {
         }
 
         // 移除最外层"()"
+        String className=StringUtils.substringBefore(toString,"(").trim();
         toString = StringUtils.substringAfter(toString, "(").trim();
         toString = StringUtils.substringBeforeLast(toString, ")").trim();
 
         String token;
-        Map<String, Object> map = new HashMap<>();
+        Map<String, Object> map = new LinkedHashMap<>();
+        map.put("_class", className);
         while (StringUtils.isNotEmpty(toString) && StringUtils.isNotEmpty(token = ToStringTokenUtils.splitToken(toString))) {
             toString = StringUtils.removeStart(StringUtils.removeStart(toString, token).trim(), ",").trim();
 
@@ -72,6 +74,7 @@ public class ToStringUtils {
             Pair<String, String> keyValue = ToStringTokenUtils.parseToken(token);
             map.put(keyValue.getKey(), buildTypeValue(keyValue.getKey(), keyValue.getValue()));
         }
+
         return map;
     }
 
